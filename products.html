@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velora | Products</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f7f8;
+    color:#171717;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #e5e5e5;
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 22px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#7c3aed;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-links a{
+    font-size:14px;
+    font-weight:600;
+    color:#525252;
+}
+
+.nav-links a:hover{
+    color:#7c3aed;
+}
+
+.cart-link{
+    background:#7c3aed;
+    color:white!important;
+    padding:10px 15px;
+    border-radius:9px;
+}
+
+.mobile-menu{
+    display:none;
+    border:none;
+    background:#111827;
+    color:white;
+    padding:9px 12px;
+    border-radius:8px;
+    font-size:20px;
+}
+
+.hero{
+    background:linear-gradient(135deg,#111827,#4c1d95);
+    color:white;
+    padding:75px 22px;
+}
+
+.hero-inner{
+    max-width:1200px;
+    margin:auto;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:52px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#ddd6fe;
+    max-width:650px;
+    margin:auto;
+    line-height:1.7;
+}
+
+.shop{
+    max-width:1200px;
+    margin:auto;
+    padding:55px 22px 80px;
+}
+
+.toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:28px;
+    flex-wrap:wrap;
+}
+
+.search-box{
+    flex:1;
+    min-width:250px;
+}
+
+.search-box input{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid #d4d4d4;
+    border-radius:12px;
+    outline:none;
+    background:white;
+}
+
+.search-box input:focus{
+    border-color:#7c3aed;
+}
+
+.filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.filter-btn{
+    border:1px solid #d4d4d4;
+    background:white;
+    color:#525252;
+    padding:10px 14px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+    background:#7c3aed;
+    border-color:#7c3aed;
+    color:white;
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.product-card{
+    background:white;
+    border:1px solid #e5e5e5;
+    border-radius:17px;
+    overflow:hidden;
+    transition:.2s;
+}
+
+.product-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.product-image{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    background:#f1f1f1;
+    display:block;
+}
+
+.no-image{
+    width:100%;
+    height:230px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#ede9fe,#f5f3ff);
+    font-size:65px;
+}
+
+.product-info{
+    padding:18px;
+}
+
+.category{
+    color:#7c3aed;
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+.product-info h3{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.description{
+    color:#737373;
+    font-size:14px;
+    line-height:1.5;
+    min-height:42px;
+    margin-bottom:12px;
+}
+
+.price-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.price{
+    font-size:19px;
+    font-weight:800;
+}
+
+.details-btn{
+    background:#111827;
+    color:white;
+    padding:9px 12px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.details-btn:hover{
+    background:#7c3aed;
+}
+
+.stock{
+    color:#737373;
+    font-size:12px;
+    margin-top:10px;
+}
+
+.empty{
+    grid-column:1/-1;
+    text-align:center;
+    padding:60px 20px;
+    background:white;
+    border-radius:16px;
+    border:1px solid #e5e5e5;
+}
+
+.empty h2{
+    margin-bottom:8px;
+}
+
+.empty p{
+    color:#737373;
+}
+
+.footer{
+    background:#111827;
+    color:white;
+    padding:35px 22px;
+}
+
+.footer-inner{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.footer p{
+    color:#9ca3af;
+    font-size:14px;
+}
+
+.footer-links{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.footer-links a{
+    color:#d1d5db;
+    font-size:14px;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+@media(max-width:1000px){
+    .products-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:750px){
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:72px;
+        left:0;
+        right:0;
+        background:white;
+        border-bottom:1px solid #e5e5e5;
+        padding:18px 22px;
+        flex-direction:column;
+        align-items:stretch;
+        gap:10px;
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:10px;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .products-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:520px){
+    .products-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding:55px 20px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .shop{
+        padding:35px 15px 60px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+```
+<nav class="nav">
+
+    <a href="index.html" class="logo">
+        Velora<span>.</span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" class="cart-link">
+            Cart (<span id="cartCount">0</span>)
+        </a>
+    </div>
+
+    <button class="mobile-menu" id="mobileMenu">☰</button>
+
+</nav>
+```
+
+</header>
+
+<section class="hero">
+
+```
+<div class="hero-inner">
+
+    <h1>Explore Products</h1>
+
+    <p>
+        Discover useful products selected for everyday life.
+        Browse our collection and find something that fits your needs.
+    </p>
+
+</div>
+```
+
+</section>
+
+<main class="shop">
+
+```
+<div class="toolbar">
+
+    <div class="search-box">
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search products..."
+        >
+    </div>
+
+    <div class="filters">
+
+        <button class="filter-btn active" data-category="All">
+            All
+        </button>
+
+        <button class="filter-btn" data-category="Fashion">
+            Fashion
+        </button>
+
+        <button class="filter-btn" data-category="Technology">
+            Technology
+        </button>
+
+        <button class="filter-btn" data-category="Home">
+            Home
+        </button>
+
+        <button class="filter-btn" data-category="Accessories">
+            Accessories
+        </button>
+
+        <button class="filter-btn" data-category="Other">
+            Other
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="products-grid" id="productsGrid"></div>
+```
+
+</main>
+
+<footer class="footer">
+
+```
+<div class="footer-inner">
+
+    <p>
+        © 2026 Velora. All rights reserved.
+    </p>
+
+    <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="shipping.html">Shipping & Returns</a>
+    </div>
+
+</div>
+```
+
+</footer>
+
+<script>
+
+/* ---------------- PRODUCTS ---------------- */
+
+const fallbackProducts = [
+
+    {
+        id:1,
+        name:"Urban Runner Shoes",
+        category:"Fashion",
+        price:39,
+        stock:10,
+        description:"Comfortable everyday shoes designed for casual use.",
+        image:"images/products/shoes.jpg"
+    },
+
+    {
+        id:2,
+        name:"Wireless Headphones",
+        category:"Technology",
+        price:49,
+        stock:10,
+        description:"Wireless headphones for everyday listening.",
+        image:"images/products/headphones.jpg"
+    },
+
+    {
+        id:3,
+        name:"Everyday Backpack",
+        category:"Accessories",
+        price:32,
+        stock:10,
+        description:"A practical backpack for everyday use.",
+        image:"images/products/backpack.jpg"
+    },
+
+    {
+        id:4,
+        name:"Modern Desk Lamp",
+        category:"Home",
+        price:25,
+        stock:10,
+        description:"A clean modern lamp for your desk or workspace.",
+        image:"images/products/lamp.jpg"
+    },
+
+    {
+        id:5,
+        name:"Classic Everyday Watch",
+        category:"Fashion",
+        price:45,
+        stock:10,
+        description:"A simple everyday watch with a classic look.",
+        image:"images/products/watch.jpg"
+    },
+
+    {
+        id:6,
+        name:"Portable Speaker",
+        category:"Technology",
+        price:35,
+        stock:10,
+        description:"Compact portable speaker for everyday use.",
+        image:"images/products/speaker.jpg"
+    },
+
+    {
+        id:7,
+        name:"Storage Organizer",
+        category:"Home",
+        price:18,
+        stock:10,
+        description:"Useful organizer for keeping everyday items arranged.",
+        image:"images/products/organizer.jpg"
+    },
+
+    {
+        id:8,
+        name:"Travel Bottle",
+        category:"Accessories",
+        price:15,
+        stock:10,
+        description:"Reusable bottle suitable for travel and daily use.",
+        image:"images/products/bottle.jpg"
+    }
+
+];
+
+
+function getProducts(){
+
+    const saved =
+        localStorage.getItem("veloraProducts");
+
+    if(saved){
+
+        try{
+
+            const products = JSON.parse(saved);
+
+            if(Array.isArray(products)){
+                return products;
+            }
+
+        }catch(error){
+
+            console.log("Product data error.");
+
+        }
+
+    }
+
+
+    localStorage.setItem(
+        "veloraProducts",
+        JSON.stringify(fallbackProducts)
+    );
+
+    return fallbackProducts;
+
+}
+
+
+/* ---------------- DISPLAY ---------------- */
+
+let selectedCategory = "All";
+
+function renderProducts(){
+
+    const products = getProducts();
+
+    const search =
+        document.getElementById("searchInput").value
+        .toLowerCase()
+        .trim();
+
+
+    const filtered = products.filter(product => {
+
+        const matchesCategory =
+            selectedCategory === "All" ||
+            product.category === selectedCategory;
+
+
+        const matchesSearch =
+            product.name.toLowerCase().includes(search) ||
+            product.category.toLowerCase().includes(search) ||
+            product.description.toLowerCase().includes(search);
+
+
+        return matchesCategory && matchesSearch;
+
+    });
+
+
+    const grid =
+        document.getElementById("productsGrid");
+
+
+    if(filtered.length === 0){
+
+        grid.innerHTML = `
+
+            <div class="empty">
+
+                <h2>No products found</h2>
+
+                <p>
+                    Try another search or category.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML = filtered.map(product => {
+
+        let imageHTML;
+
+
+        if(product.image){
+
+            imageHTML = `
+
+                <img
+                    class="product-image"
+                    src="${product.image}"
+                    alt="${escapeHTML(product.name)}"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                >
+
+                <div
+                    class="no-image"
+                    style="display:none">
+                    🛍️
+                </div>
+
+            `;
+
+        }else{
+
+            imageHTML = `
+
+                <div class="no-image">
+                    🛍️
+                </div>
+
+            `;
+
+        }
+
+
+        return `
+
+            <article class="product-card">
+
+                ${imageHTML}
+
+                <div class="product-info">
+
+                    <div class="category">
+                        ${escapeHTML(product.category)}
+                    </div>
+
+                    <h3>
+                        ${escapeHTML(product.name)}
+                    </h3>
+
+                    <p class="description">
+                        ${escapeHTML(product.description)}
+                    </p>
+
+                    <div class="price-row">
+
+                        <div class="price">
+                            $${Number(product.price).toFixed(2)}
+                        </div>
+
+                        <a
+                            class="details-btn"
+                            href="product.html?id=${encodeURIComponent(product.id)}">
+                            View Details
+                        </a>
+
+                    </div>
+
+                    <div class="stock">
+                        ${Number(product.stock) > 0
+                            ? "In stock: " + Number(product.stock)
+                            : "Currently out of stock"}
+                    </div>
+
+                </div>
+
+            </article>
+
+        `;
+
+    }).join("");
+
+}
+
+
+/* ---------------- SEARCH ---------------- */
+
+document.getElementById("searchInput")
+.addEventListener("input",renderProducts);
+
+
+/* ---------------- FILTERS ---------------- */
+
+document.querySelectorAll(".filter-btn")
+.forEach(button => {
+
+    button.addEventListener("click",function(){
+
+        document.querySelectorAll(".filter-btn")
+        .forEach(btn => btn.classList.remove("active"));
+
+        this.classList.add("active");
+
+        selectedCategory =
+            this.dataset.category;
+
+        renderProducts();
+
+    });
+
+});
+
+
+/* ---------------- CART COUNT ---------------- */
+
+function updateCartCount(){
+
+    let cart = [];
+
+    try{
+
+        cart =
+            JSON.parse(
+                localStorage.getItem("veloraCart") || "[]"
+            );
+
+    }catch(error){
+
+        cart = [];
+
+    }
+
+
+    const count = cart.reduce(
+        (total,item) =>
+            total + Number(item.quantity || 0),
+        0
+    );
+
+
+    document.getElementById("cartCount")
+        .textContent = count;
+
+}
+
+
+/* ---------------- MOBILE MENU ---------------- */
+
+document.getElementById("mobileMenu")
+.addEventListener("click",function(){
+
+    document.getElementById("navLinks")
+        .classList.toggle("open");
+
+});
+
+
+/* ---------------- SAFETY ---------------- */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* ---------------- START ---------------- */
+
+renderProducts();
+updateCartCount();
+
+</script>
+
+</body>
+</html>

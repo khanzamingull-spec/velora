@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms & Conditions | Velora</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f6f7fb;
+    color:#172033;
+    line-height:1.7;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid #e7e9f0;
+}
+
+.navbar{
+    max-width:1180px;
+    margin:auto;
+    min-height:76px;
+    padding:0 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:-1px;
+    color:#171b2e;
+}
+
+.logo span{
+    color:#6d4aff;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:26px;
+}
+
+.nav-links a{
+    color:#5d6577;
+    font-size:14px;
+    font-weight:600;
+    transition:0.25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:#6d4aff;
+}
+
+.cart-link{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.cart-count{
+    min-width:22px;
+    height:22px;
+    padding:0 6px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50px;
+    background:#6d4aff;
+    color:white;
+    font-size:11px;
+    font-weight:800;
+}
+
+.menu-btn{
+    display:none;
+    border:0;
+    background:#f0efff;
+    color:#5b3ee6;
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    font-size:21px;
+    cursor:pointer;
+}
+
+.hero{
+    background:
+        radial-gradient(circle at 20% 20%, rgba(132,101,255,0.35), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(95,55,220,0.28), transparent 30%),
+        linear-gradient(135deg,#15182b,#25204a);
+    color:white;
+    padding:88px 24px;
+    text-align:center;
+}
+
+.hero-content{
+    max-width:760px;
+    margin:auto;
+}
+
+.hero-label{
+    display:inline-block;
+    padding:8px 14px;
+    border:1px solid rgba(255,255,255,0.18);
+    background:rgba(255,255,255,0.08);
+    border-radius:50px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(38px,6vw,62px);
+    line-height:1.05;
+    letter-spacing:-2px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#d8d8e6;
+    font-size:17px;
+}
+
+.policy-section{
+    max-width:920px;
+    margin:70px auto;
+    padding:0 24px;
+}
+
+.policy-card{
+    background:white;
+    border:1px solid #e7e9f0;
+    border-radius:24px;
+    padding:42px;
+    box-shadow:0 18px 50px rgba(20,25,50,0.06);
+}
+
+.notice{
+    padding:18px 20px;
+    background:#f2efff;
+    border:1px solid #ded7ff;
+    border-radius:16px;
+    color:#4d3ca2;
+    margin-bottom:36px;
+    font-size:14px;
+}
+
+.policy-block{
+    padding:0 0 30px;
+    margin-bottom:30px;
+    border-bottom:1px solid #eceef4;
+}
+
+.policy-block:last-child{
+    border-bottom:0;
+    margin-bottom:0;
+    padding-bottom:0;
+}
+
+.policy-block h2{
+    font-size:21px;
+    color:#181c30;
+    margin-bottom:12px;
+}
+
+.policy-block p{
+    color:#646c7d;
+    font-size:15px;
+}
+
+.policy-block ul{
+    margin:12px 0 0 20px;
+    color:#646c7d;
+}
+
+.policy-block li{
+    margin-bottom:7px;
+}
+
+footer{
+    background:#15182b;
+    color:white;
+    margin-top:80px;
+}
+
+.footer-main{
+    max-width:1180px;
+    margin:auto;
+    padding:55px 24px 35px;
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:50px;
+}
+
+.footer-brand p{
+    color:#aeb2c3;
+    max-width:390px;
+    margin-top:15px;
+    font-size:14px;
+}
+
+.footer-title{
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.footer-links a{
+    color:#aeb2c3;
+    font-size:14px;
+    transition:0.25s;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    max-width:1180px;
+    margin:auto;
+    padding:20px 24px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    color:#8e93a6;
+    font-size:13px;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+}
+
+@media(max-width:800px){
+
+    .navbar{
+        min-height:68px;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:68px;
+        left:0;
+        right:0;
+        background:white;
+        border-bottom:1px solid #e7e9f0;
+        padding:18px 24px 24px;
+        flex-direction:column;
+        align-items:stretch;
+        gap:4px;
+        box-shadow:0 15px 30px rgba(20,25,50,0.08);
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:13px 8px;
+        border-radius:10px;
+    }
+
+    .nav-links a:hover{
+        background:#f5f3ff;
+    }
+
+    .hero{
+        padding:70px 20px;
+    }
+
+    .policy-section{
+        margin:45px auto;
+        padding:0 16px;
+    }
+
+    .policy-card{
+        padding:26px 20px;
+        border-radius:20px;
+    }
+
+    .footer-main{
+        grid-template-columns:1fr;
+        gap:35px;
+        padding:45px 20px 30px;
+    }
+
+    .footer-bottom{
+        padding:18px 20px;
+        flex-direction:column;
+    }
+}
+
+@media(max-width:480px){
+
+    .logo{
+        font-size:24px;
+    }
+
+    .hero h1{
+        letter-spacing:-1px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .policy-card{
+        padding:23px 17px;
+    }
+
+    .policy-block h2{
+        font-size:19px;
+    }
+
+    .policy-block p,
+    .policy-block li{
+        font-size:14px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+
+```
+    <a href="index.html" class="logo">
+        Vel<span>ora</span>
+    </a>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="cart.html" class="cart-link">
+            Cart
+            <span class="cart-count" id="cartCount">0</span>
+        </a>
+    </nav>
+
+</div>
+```
+
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+
+```
+    <div class="hero-label">VELORA • STORE POLICY</div>
+
+    <h1>Terms & Conditions</h1>
+
+    <p>
+        Please read these terms before using the Velora website
+        or placing an order.
+    </p>
+
+</div>
+```
+
+</section>
+
+<section class="policy-section">
+
+```
+<div class="policy-card">
+
+    <div class="notice">
+        <strong>Demo Store Notice:</strong>
+        Velora is currently being developed as a demonstration ecommerce
+        website. Before a public launch, these terms should be reviewed
+        and updated to match the actual business, products, delivery
+        arrangements and applicable laws.
+    </div>
+
+
+    <div class="policy-block">
+        <h2>1. Website Use</h2>
+
+        <p>
+            By using the Velora website, you agree to use the website
+            responsibly and only for lawful purposes. You should not
+            attempt to damage, disrupt or misuse the website or its
+            features.
+        </p>
+    </div>
+
+
+    <div class="policy-block">
+        <h2>2. Products and Prices</h2>
+
+        <p>
+            Product names, descriptions, images and prices displayed on
+            Velora may be examples used during development. Before launch,
+            actual product information and pricing should be confirmed
+            and kept up to date.
+        </p>
+    </div>
+
+
+    <div class="policy-block">
+        <h2>3. Orders</h2>
+
+        <p>
+            Placing an order through the website represents a request to
+            purchase the selected products. An order should only be treated
+            as confirmed when the store has accepted and processed it.
+        </p>
+    </div>
+
+
+    <div class="policy-block">
+        <h2>4. Payment</h2>
+
+        <p>
+            The current demonstration checkout supports Cash on Delivery.
+            Real payment methods, payment providers and applicable
+            conditions should be added and clearly explained before the
+            website is launched for real customers.
+        </p>
+    </div>
+
+
+    <div class="policy-block">
+        <h2>5. Delivery</h2>
+
+        <p>
+            Delivery times and charges may vary depending on the customer's
+            location, products and delivery service. Final delivery
+            information should be confirmed by Velora before public launch.
+        </p>
+    </div>
+
+
+    <div class="policy-block">
+        <h2>6. Cancellations and Returns</h2>
+
+        <p>
+            Cancellation and return conditions should be communicated
+            clearly to customers before an order is completed. The actual
+            policy should specify eligible products, time limits,
+            responsibilities and any applicable conditions.
+        </p>
+    </div>
+
+
+    <div class="policy-block">
+        <h2>7. Customer Information</h2>
+
+        <p>
+            Customers should provide accurate information when placing an
+            order, including their name, phone number and delivery address.
+            Incorrect information may cause delays or prevent successful
+            delivery.
+        </p>
+    </div>
+
+
+    <div class="policy-block">
+        <h2>8. Website Changes</h2>
+
+        <p>
+            Velora may update website content, product information,
+            features or policies as the store develops. Important changes
+            should be communicated appropriately when the website is
+            operating as a real business.
+        </p>
+    </div>
+
+
+    <div class="policy-block">
+        <h2>9. Demo System</h2>
+
+        <p>
+            The current website uses browser-based storage for demonstration
+            purposes. Information stored in the demo system is not a
+            replacement for a secure production database or professional
+            ecommerce infrastructure.
+        </p>
+    </div>
+
+
+    <div class="policy-block">
+        <h2>10. Contact</h2>
+
+        <p>
+            If you have a question about these terms or an order, please
+            use the contact page. Business contact details should be
+            updated before the store is publicly launched.
+        </p>
+    </div>
+
+</div>
+```
+
+</section>
+
+<footer>
+
+```
+<div class="footer-main">
+
+    <div class="footer-brand">
+        <div class="logo" style="color:white;">
+            Vel<span>ora</span>
+        </div>
+
+        <p>
+            A simple and modern online shopping experience,
+            built with clarity, convenience and trust in mind.
+        </p>
+    </div>
+
+
+    <div>
+        <div class="footer-title">Quick Links</div>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+
+    <div>
+        <div class="footer-title">Store Policies</div>
+
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
+            <a href="shipping.html">Shipping & Returns</a>
+            <a href="cart.html">Your Cart</a>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="footer-bottom">
+    <div>© 2026 Velora. All rights reserved.</div>
+    <div>Simple shopping. Better experience.</div>
+</div>
+```
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("show");
+}
+
+
+function updateCartCount(){
+
+    let cart = [];
+
+    try{
+        cart = JSON.parse(localStorage.getItem("veloraCart")) || [];
+    }catch(error){
+        cart = [];
+    }
+
+    let count = cart.reduce(function(total,item){
+        return total + Number(item.quantity || 0);
+    },0);
+
+    document.getElementById("cartCount").textContent = count;
+}
+
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>

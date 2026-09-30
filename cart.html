@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velora | Your Cart</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f7f8;
+    color:#171717;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #e5e5e5;
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 22px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#7c3aed;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-links a{
+    font-size:14px;
+    font-weight:600;
+    color:#525252;
+}
+
+.nav-links a:hover{
+    color:#7c3aed;
+}
+
+.cart-link{
+    background:#7c3aed;
+    color:white!important;
+    padding:10px 15px;
+    border-radius:9px;
+}
+
+.mobile-menu{
+    display:none;
+    border:none;
+    background:#111827;
+    color:white;
+    padding:9px 12px;
+    border-radius:8px;
+    font-size:20px;
+}
+
+.page{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 22px 80px;
+}
+
+.page-header{
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    font-size:42px;
+    margin-bottom:8px;
+}
+
+.page-header p{
+    color:#737373;
+}
+
+.cart-layout{
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:25px;
+    align-items:start;
+}
+
+.cart-items{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.cart-item{
+    background:white;
+    border:1px solid #e5e5e5;
+    border-radius:16px;
+    padding:15px;
+    display:grid;
+    grid-template-columns:110px 1fr auto;
+    gap:18px;
+    align-items:center;
+}
+
+.item-image{
+    width:110px;
+    height:110px;
+    border-radius:12px;
+    overflow:hidden;
+    background:#f1f1f1;
+}
+
+.item-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.item-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:42px;
+    background:linear-gradient(135deg,#ede9fe,#f5f3ff);
+}
+
+.item-category{
+    color:#7c3aed;
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    margin-bottom:5px;
+}
+
+.item-name{
+    font-size:18px;
+    font-weight:800;
+    margin-bottom:7px;
+}
+
+.item-price{
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.quantity-control{
+    display:flex;
+    align-items:center;
+    width:max-content;
+    border:1px solid #d4d4d4;
+    border-radius:8px;
+    overflow:hidden;
+}
+
+.quantity-control button{
+    width:35px;
+    height:35px;
+    border:none;
+    background:#f5f5f5;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.quantity-control input{
+    width:45px;
+    height:35px;
+    border:none;
+    text-align:center;
+    outline:none;
+    font-weight:700;
+}
+
+.item-total{
+    text-align:right;
+    font-size:19px;
+    font-weight:800;
+}
+
+.remove-btn{
+    margin-top:12px;
+    border:none;
+    background:none;
+    color:#dc2626;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:700;
+}
+
+.summary{
+    background:white;
+    border:1px solid #e5e5e5;
+    border-radius:17px;
+    padding:24px;
+    position:sticky;
+    top:95px;
+}
+
+.summary h2{
+    margin-bottom:22px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:14px;
+    color:#525252;
+}
+
+.summary-row.total{
+    border-top:1px solid #e5e5e5;
+    padding-top:18px;
+    margin-top:18px;
+    color:#171717;
+    font-size:21px;
+    font-weight:800;
+}
+
+.checkout-btn{
+    display:block;
+    text-align:center;
+    background:#7c3aed;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    font-weight:800;
+    margin-top:22px;
+}
+
+.checkout-btn:hover{
+    background:#6d28d9;
+}
+
+.continue-btn{
+    display:block;
+    text-align:center;
+    border:1px solid #d4d4d4;
+    background:white;
+    padding:13px;
+    border-radius:10px;
+    font-weight:700;
+    margin-top:10px;
+}
+
+.continue-btn:hover{
+    border-color:#7c3aed;
+    color:#7c3aed;
+}
+
+.empty-cart{
+    max-width:650px;
+    margin:40px auto 70px;
+    text-align:center;
+    background:white;
+    border:1px solid #e5e5e5;
+    border-radius:20px;
+    padding:60px 25px;
+}
+
+.empty-icon{
+    font-size:65px;
+    margin-bottom:15px;
+}
+
+.empty-cart h2{
+    margin-bottom:8px;
+}
+
+.empty-cart p{
+    color:#737373;
+    margin-bottom:22px;
+    line-height:1.6;
+}
+
+.shop-btn{
+    display:inline-block;
+    background:#7c3aed;
+    color:white;
+    padding:13px 20px;
+    border-radius:10px;
+    font-weight:800;
+}
+
+.footer{
+    background:#111827;
+    color:white;
+    padding:35px 22px;
+}
+
+.footer-inner{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.footer p{
+    color:#9ca3af;
+    font-size:14px;
+}
+
+.footer-links{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.footer-links a{
+    color:#d1d5db;
+    font-size:14px;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:72px;
+        left:0;
+        right:0;
+        background:white;
+        border-bottom:1px solid #e5e5e5;
+        padding:18px 22px;
+        flex-direction:column;
+        align-items:stretch;
+        gap:10px;
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:10px;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .cart-layout{
+        grid-template-columns:1fr;
+    }
+
+    .summary{
+        position:static;
+    }
+}
+
+@media(max-width:600px){
+
+    .page{
+        padding:35px 15px 60px;
+    }
+
+    .page-header h1{
+        font-size:34px;
+    }
+
+    .cart-item{
+        grid-template-columns:85px 1fr;
+        gap:12px;
+    }
+
+    .item-image{
+        width:85px;
+        height:85px;
+    }
+
+    .item-total{
+        grid-column:2;
+        text-align:left;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+```
+<nav class="nav">
+
+    <a href="index.html" class="logo">
+        Velora<span>.</span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+
+        <a href="index.html">Home</a>
+
+        <a href="products.html">Products</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a href="cart.html" class="cart-link">
+            Cart (<span id="cartCount">0</span>)
+        </a>
+
+    </div>
+
+    <button class="mobile-menu" id="mobileMenu">
+        ☰
+    </button>
+
+</nav>
+```
+
+</header>
+
+<main class="page">
+
+```
+<div class="page-header">
+
+    <h1>Your Cart</h1>
+
+    <p>
+        Review your products before completing your order.
+    </p>
+
+</div>
+
+
+<div id="cartContent"></div>
+```
+
+</main>
+
+<footer class="footer">
+
+```
+<div class="footer-inner">
+
+    <p>
+        © 2026 Velora. All rights reserved.
+    </p>
+
+    <div class="footer-links">
+
+        <a href="privacy.html">Privacy</a>
+
+        <a href="terms.html">Terms</a>
+
+        <a href="shipping.html">Shipping & Returns</a>
+
+    </div>
+
+</div>
+```
+
+</footer>
+
+<script>
+
+/* ---------------- PRODUCT DATA ---------------- */
+
+const fallbackProducts = [
+
+    {
+        id:1,
+        name:"Urban Runner Shoes",
+        category:"Fashion",
+        price:39,
+        stock:10,
+        image:"images/products/shoes.jpg"
+    },
+
+    {
+        id:2,
+        name:"Wireless Headphones",
+        category:"Technology",
+        price:49,
+        stock:10,
+        image:"images/products/headphones.jpg"
+    },
+
+    {
+        id:3,
+        name:"Everyday Backpack",
+        category:"Accessories",
+        price:32,
+        stock:10,
+        image:"images/products/backpack.jpg"
+    },
+
+    {
+        id:4,
+        name:"Modern Desk Lamp",
+        category:"Home",
+        price:25,
+        stock:10,
+        image:"images/products/lamp.jpg"
+    },
+
+    {
+        id:5,
+        name:"Classic Everyday Watch",
+        category:"Fashion",
+        price:45,
+        stock:10,
+        image:"images/products/watch.jpg"
+    },
+
+    {
+        id:6,
+        name:"Portable Speaker",
+        category:"Technology",
+        price:35,
+        stock:10,
+        image:"images/products/speaker.jpg"
+    },
+
+    {
+        id:7,
+        name:"Storage Organizer",
+        category:"Home",
+        price:18,
+        stock:10,
+        image:"images/products/organizer.jpg"
+    },
+
+    {
+        id:8,
+        name:"Travel Bottle",
+        category:"Accessories",
+        price:15,
+        stock:10,
+        image:"images/products/bottle.jpg"
+    }
+
+];
+
+
+function getProducts(){
+
+    const saved =
+        localStorage.getItem("veloraProducts");
+
+
+    if(saved){
+
+        try{
+
+            const products = JSON.parse(saved);
+
+            if(Array.isArray(products)){
+                return products;
+            }
+
+        }catch(error){
+
+            console.log("Product data error.");
+
+        }
+
+    }
+
+
+    localStorage.setItem(
+        "veloraProducts",
+        JSON.stringify(fallbackProducts)
+    );
+
+
+    return fallbackProducts;
+
+}
+
+
+/* ---------------- CART ---------------- */
+
+function getCart(){
+
+    try{
+
+        const cart =
+            JSON.parse(
+                localStorage.getItem("veloraCart") || "[]"
+            );
+
+        return Array.isArray(cart) ? cart : [];
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+function saveCart(cart){
+
+    localStorage.setItem(
+        "veloraCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+/* ---------------- DISPLAY CART ---------------- */
+
+function renderCart(){
+
+    const products = getProducts();
+
+    const cart = getCart();
+
+    const content =
+        document.getElementById("cartContent");
+
+
+    if(cart.length === 0){
+
+        content.innerHTML = `
+
+            <div class="empty-cart">
+
+                <div class="empty-icon">
+                    🛒
+                </div>
+
+                <h2>
+                    Your cart is empty
+                </h2>
+
+                <p>
+                    You haven't added any products yet.
+                    Browse our store and find something you like.
+                </p>
+
+                <a
+                    href="products.html"
+                    class="shop-btn">
+                    Start Shopping
+                </a>
+
+            </div>
+
+        `;
+
+        updateCartCount();
+
+        return;
+
+    }
+
+
+    let subtotal = 0;
+
+
+    const itemsHTML = cart.map((cartItem,index) => {
+
+        const product =
+            products.find(
+                item =>
+                    String(item.id) === String(cartItem.id)
+            );
+
+
+        if(!product){
+            return "";
+        }
+
+
+        let quantity =
+            Number(cartItem.quantity || 1);
+
+
+        if(quantity < 1){
+            quantity = 1;
+        }
+
+
+        const price =
+            Number(product.price || 0);
+
+
+        const itemTotal =
+            price * quantity;
+
+
+        subtotal += itemTotal;
+
+
+        let imageHTML;
+
+
+        if(product.image){
+
+            imageHTML = `
+
+                <img
+                    src="${product.image}"
+                    alt="${escapeHTML(product.name)}"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                >
+
+                <div
+                    class="item-placeholder"
+                    style="display:none">
+                    🛍️
+                </div>
+
+            `;
+
+        }else{
+
+            imageHTML = `
+
+                <div class="item-placeholder">
+                    🛍️
+                </div>
+
+            `;
+
+        }
+
+
+        return `
+
+            <div class="cart-item">
+
+                <div class="item-image">
+
+                    ${imageHTML}
+
+                </div>
+
+
+                <div>
+
+                    <div class="item-category">
+                        ${escapeHTML(product.category || "Other")}
+                    </div>
+
+                    <div class="item-name">
+                        ${escapeHTML(product.name)}
+                    </div>
+
+                    <div class="item-price">
+                        $${price.toFixed(2)} each
+                    </div>
+
+
+                    <div class="quantity-control">
+
+                        <button
+                            type="button"
+                            onclick="changeQuantity(${index},-1)">
+                            −
+                        </button>
+
+                        <input
+                            type="number"
+                            value="${quantity}"
+                            min="1"
+                            onchange="setQuantity(${index},this.value)"
+                        >
+
+                        <button
+                            type="button"
+                            onclick="changeQuantity(${index},1)">
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <button
+                        class="remove-btn"
+                        onclick="removeItem(${index})">
+                        Remove
+                    </button>
+
+                </div>
+
+
+                <div class="item-total">
+                    $${itemTotal.toFixed(2)}
+                </div>
+
+            </div>
+
+        `;
+
+    }).join("");
+
+
+    content.innerHTML = `
+
+        <div class="cart-layout">
+
+            <div class="cart-items">
+
+                ${itemsHTML}
+
+            </div>
+
+
+            <aside class="summary">
+
+                <h2>
+                    Order Summary
+                </h2>
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong>
+                        $${subtotal.toFixed(2)}
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <strong>
+                        Calculated at checkout
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong>
+                        $${subtotal.toFixed(2)}
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="checkout.html"
+                    class="checkout-btn">
+                    Proceed to Checkout
+                </a>
+
+
+                <a
+                    href="products.html"
+                    class="continue-btn">
+                    Continue Shopping
+                </a>
+
+            </aside>
+
+        </div>
+
+    `;
+
+
+    updateCartCount();
+
+}
+
+
+/* ---------------- QUANTITY ---------------- */
+
+function changeQuantity(index,amount){
+
+    const cart = getCart();
+
+    if(!cart[index]){
+        return;
+    }
+
+
+    let quantity =
+        Number(cart[index].quantity || 1);
+
+
+    quantity += amount;
+
+
+    if(quantity <= 0){
+
+        cart.splice(index,1);
+
+    }else{
+
+        const products = getProducts();
+
+        const product =
+            products.find(
+                item =>
+                    String(item.id) === String(cart[index].id)
+            );
+
+
+        if(product){
+
+            const stock =
+                Number(product.stock || 0);
+
+
+            if(stock > 0 && quantity > stock){
+                quantity = stock;
+            }
+
+        }
+
+
+        cart[index].quantity = quantity;
+
+    }
+
+
+    saveCart(cart);
+
+    renderCart();
+
+}
+
+
+function setQuantity(index,value){
+
+    const cart = getCart();
+
+    if(!cart[index]){
+        return;
+    }
+
+
+    let quantity =
+        Number(value);
+
+
+    if(!quantity || quantity < 1){
+        quantity = 1;
+    }
+
+
+    const products = getProducts();
+
+    const product =
+        products.find(
+            item =>
+                String(item.id) === String(cart[index].id)
+        );
+
+
+    if(product){
+
+        const stock =
+            Number(product.stock || 0);
+
+
+        if(stock > 0 && quantity > stock){
+            quantity = stock;
+        }
+
+    }
+
+
+    cart[index].quantity =
+        quantity;
+
+
+    saveCart(cart);
+
+    renderCart();
+
+}
+
+
+/* ---------------- REMOVE ---------------- */
+
+function removeItem(index){
+
+    const cart = getCart();
+
+    if(!cart[index]){
+        return;
+    }
+
+
+    cart.splice(index,1);
+
+    saveCart(cart);
+
+    renderCart();
+
+}
+
+
+/* ---------------- CART COUNT ---------------- */
+
+function updateCartCount(){
+
+    const cart = getCart();
+
+    const count =
+        cart.reduce(
+            (total,item) =>
+                total + Number(item.quantity || 0),
+            0
+        );
+
+
+    document.getElementById("cartCount")
+        .textContent = count;
+
+}
+
+
+/* ---------------- MOBILE MENU ---------------- */
+
+document
+    .getElementById("mobileMenu")
+    .addEventListener("click",function(){
+
+        document
+            .getElementById("navLinks")
+            .classList.toggle("open");
+
+    });
+
+
+/* ---------------- SAFETY ---------------- */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* ---------------- START ---------------- */
+
+renderCart();
+
+</script>
+
+</body>
+</html>

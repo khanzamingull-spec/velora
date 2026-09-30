@@ -1,0 +1,998 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn more about Velora.">
+  <title>About Velora</title>
+
+  <style>
+    :root {
+      --dark: #11111f;
+      --dark-2: #1b1b2d;
+      --purple: #6d4aff;
+      --purple-dark: #5636dc;
+      --purple-light: #eeeaff;
+      --text: #17172b;
+      --muted: #69697d;
+      --border: #e7e7ef;
+      --bg: #f7f7fb;
+      --white: #ffffff;
+      --shadow: 0 20px 55px rgba(23,23,43,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      max-width: 1200px;
+      min-height: 76px;
+      margin: auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      color: var(--dark);
+      font-size: 29px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
+
+    .logo span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .nav-links a {
+      color: #55556a;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--purple);
+    }
+
+    .nav-links .active {
+      color: var(--purple);
+    }
+
+    .cart-btn {
+      background: var(--dark);
+      color: white !important;
+      padding: 11px 16px;
+      border-radius: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .cart-btn:hover {
+      background: var(--purple);
+    }
+
+    .cart-count {
+      min-width: 21px;
+      height: 21px;
+      padding: 0 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--purple);
+      color: white;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: var(--dark);
+      color: white;
+      width: 43px;
+      height: 43px;
+      border-radius: 10px;
+      font-size: 21px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(109,74,255,0.3), transparent 30%),
+        linear-gradient(135deg, #11111f, #25223b);
+      color: white;
+      padding: 78px 24px;
+      text-align: center;
+    }
+
+    .hero-label {
+      color: #cfc8ff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.8px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 62px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: auto;
+      color: #c7c7d6;
+      font-size: 16px;
+    }
+
+    /* MAIN */
+
+    .main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 24px 95px;
+    }
+
+    /* STORY */
+
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+      align-items: center;
+      margin-bottom: 90px;
+    }
+
+    .story-label {
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .story h2 {
+      font-size: clamp(32px, 4vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .story p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 14px;
+      max-width: 520px;
+    }
+
+    .story-visual {
+      min-height: 430px;
+      border-radius: 25px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,0.16), transparent 20%),
+        radial-gradient(circle at 80% 75%, rgba(109,74,255,0.4), transparent 30%),
+        linear-gradient(135deg, #17172a, #312b55);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .visual-card {
+      position: absolute;
+      background: rgba(255,255,255,0.96);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .visual-card.one {
+      width: 210px;
+      top: 65px;
+      left: 55px;
+      transform: rotate(-6deg);
+    }
+
+    .visual-card.two {
+      width: 230px;
+      bottom: 65px;
+      right: 45px;
+      transform: rotate(5deg);
+    }
+
+    .visual-icon {
+      font-size: 35px;
+      margin-bottom: 8px;
+    }
+
+    .visual-card strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .visual-card span {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .visual-circle {
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 90px;
+    }
+
+    .stat {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    .stat-number {
+      color: var(--purple);
+      font-size: 30px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* VALUES */
+
+    .values-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .values-heading span {
+      display: block;
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .values-heading h2 {
+      font-size: 35px;
+      letter-spacing: -1.5px;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 90px;
+    }
+
+    .value {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      padding: 25px;
+      transition: 0.25s ease;
+    }
+
+    .value:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .value-icon {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 11px;
+      background: var(--purple-light);
+      font-size: 21px;
+      margin-bottom: 17px;
+    }
+
+    .value h3 {
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    .value p {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* CTA */
+
+    .cta {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(109,74,255,0.3), transparent 35%),
+        linear-gradient(135deg, #11111f, #25223b);
+      border-radius: 23px;
+      color: white;
+      padding: 55px 35px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(30px, 4vw, 42px);
+      letter-spacing: -1.5px;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: #c7c7d6;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--purple);
+      color: white;
+      padding: 13px 21px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 900;
+      transition: 0.25s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--purple-dark);
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #10101d;
+      color: #a7a7ba;
+      padding: 55px 24px 25px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 45px;
+    }
+
+    .footer-logo {
+      color: white;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo span {
+      color: var(--purple);
+    }
+
+    .footer-about {
+      max-width: 350px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-column h4 {
+      color: white;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: #a7a7ba;
+      font-size: 13px;
+      margin-bottom: 9px;
+      transition: 0.2s;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: auto;
+      border-top: 1px solid #29293a;
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 12px;
+    }
+
+    .footer-bottom a {
+      color: #88889b;
+      margin-left: 17px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 950px) {
+
+      .story {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .story-visual {
+        min-height: 380px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .values {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 800px) {
+
+      .nav {
+        min-height: 70px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        padding: 17px 22px 22px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 11px 8px;
+      }
+
+      .cart-btn {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 65px 20px;
+      }
+
+      .main {
+        padding: 50px 20px 70px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-bottom a {
+        margin: 0 8px;
+      }
+    }
+
+    @media (max-width: 520px) {
+
+      .nav {
+        padding: 0 18px;
+      }
+
+      .stats,
+      .values {
+        grid-template-columns: 1fr;
+      }
+
+      .story-visual {
+        min-height: 330px;
+      }
+
+      .visual-card.one {
+        width: 175px;
+        top: 40px;
+        left: 25px;
+      }
+
+      .visual-card.two {
+        width: 185px;
+        bottom: 35px;
+        right: 20px;
+      }
+
+      .cta {
+        padding: 45px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="nav">
+
+      <a href="index.html" class="logo">
+        Vel<span>ora</span>
+      </a>
+
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">
+        ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+
+        <a href="index.html" onclick="closeMenu()">Home</a>
+
+        <a href="products.html" onclick="closeMenu()">Products</a>
+
+        <a href="about.html" class="active" onclick="closeMenu()">About</a>
+
+        <a href="contact.html" onclick="closeMenu()">Contact</a>
+
+        <a href="cart.html" class="cart-btn" onclick="closeMenu()">
+          🛒 Cart
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-label">
+      ABOUT VELORA
+    </div>
+
+    <h1>
+      Simple shopping.<br>
+      Better experience.
+    </h1>
+
+    <p>
+      Velora is built around a straightforward idea:
+      make online shopping simple, clear and enjoyable.
+    </p>
+
+  </section>
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <!-- STORY -->
+
+    <section class="story">
+
+      <div>
+
+        <div class="story-label">
+          OUR STORY
+        </div>
+
+        <h2>
+          Built with simplicity in mind.
+        </h2>
+
+        <p>
+          Velora is a modern ecommerce concept created to bring useful
+          products together in one clean and easy-to-use place.
+        </p>
+
+        <p>
+          Instead of making shopping complicated, Velora focuses on
+          clear products, simple navigation and a smooth customer journey
+          from browsing to checkout.
+        </p>
+
+        <p>
+          As the store grows, the goal is to keep that same straightforward
+          experience across every part of the website.
+        </p>
+
+      </div>
+
+      <div class="story-visual">
+
+        <div class="visual-circle"></div>
+
+        <div class="visual-card one">
+
+          <div class="visual-icon">
+            🛍️
+          </div>
+
+          <strong>
+            Easy Shopping
+          </strong>
+
+          <span>
+            Browse. Choose. Checkout.
+          </span>
+
+        </div>
+
+        <div class="visual-card two">
+
+          <div class="visual-icon">
+            ✨
+          </div>
+
+          <strong>
+            Modern Experience
+          </strong>
+
+          <span>
+            Clean design with room to grow.
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+      <div class="stat">
+
+        <div class="stat-number">
+          8+
+        </div>
+
+        <div class="stat-label">
+          Sample Products
+        </div>
+
+      </div>
+
+      <div class="stat">
+
+        <div class="stat-number">
+          4
+        </div>
+
+        <div class="stat-label">
+          Product Categories
+        </div>
+
+      </div>
+
+      <div class="stat">
+
+        <div class="stat-number">
+          1
+        </div>
+
+        <div class="stat-label">
+          Simple Shopping Goal
+        </div>
+
+      </div>
+
+      <div class="stat">
+
+        <div class="stat-number">
+          24/7
+        </div>
+
+        <div class="stat-label">
+          Online Store Access
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- VALUES -->
+
+    <section>
+
+      <div class="values-heading">
+
+        <span>
+          WHAT MATTERS
+        </span>
+
+        <h2>
+          Our Values
+        </h2>
+
+      </div>
+
+      <div class="values">
+
+        <article class="value">
+
+          <div class="value-icon">
+            ✓
+          </div>
+
+          <h3>
+            Quality
+          </h3>
+
+          <p>
+            We aim to present useful products with clear information and a clean shopping experience.
+          </p>
+
+        </article>
+
+        <article class="value">
+
+          <div class="value-icon">
+            ◇
+          </div>
+
+          <h3>
+            Simplicity
+          </h3>
+
+          <p>
+            Shopping should be easy to understand, from discovering products to completing an order.
+          </p>
+
+        </article>
+
+        <article class="value">
+
+          <div class="value-icon">
+            ♢
+          </div>
+
+          <h3>
+            Trust
+          </h3>
+
+          <p>
+            Clear information and straightforward communication are important to every customer experience.
+          </p>
+
+        </article>
+
+        <article class="value">
+
+          <div class="value-icon">
+            ↗
+          </div>
+
+          <h3>
+            Growth
+          </h3>
+
+          <p>
+            Velora is designed with room to add products, features and improvements over time.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+      <h2>
+        Ready to explore Velora?
+      </h2>
+
+      <p>
+        Browse our collection and discover what's available.
+      </p>
+
+      <a href="products.html" class="cta-btn">
+        Explore Products →
+      </a>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <div>
+
+        <div class="footer-logo">
+          Vel<span>ora</span>
+        </div>
+
+        <p class="footer-about">
+          A simple modern ecommerce experience built around useful products,
+          straightforward shopping and room to grow.
+        </p>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h4>Explore</h4>
+
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h4>Information</h4>
+
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="shipping.html">Shipping & Returns</a>
+        <a href="cart.html">Shopping Cart</a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <div>
+        © 2026 Velora. All rights reserved.
+      </div>
+
+      <div>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="shipping.html">Shipping</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script>
+
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    function closeMenu() {
+      document.getElementById("navLinks").classList.remove("active");
+    }
+
+    function updateCartCount() {
+
+      const cartCount =
+        document.getElementById("cartCount");
+
+      try {
+
+        const cart =
+          JSON.parse(
+            localStorage.getItem("veloraCart")
+          ) || [];
+
+        const totalItems =
+          cart.reduce(function(total, item) {
+            return total + Number(item.quantity || 0);
+          }, 0);
+
+        cartCount.textContent =
+          totalItems;
+
+      } catch (error) {
+
+        cartCount.textContent =
+          "0";
+
+      }
+
+    }
+
+    updateCartCount();
+
+  </script>
+
+</body>
+</html>
+```

@@ -1,0 +1,563 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Velora Privacy Policy.">
+  <title>Privacy Policy | Velora</title>
+
+  <style>
+    :root {
+      --dark:#11111f;
+      --purple:#6d4aff;
+      --purple-dark:#5636dc;
+      --text:#17172b;
+      --muted:#69697d;
+      --border:#e7e7ef;
+      --bg:#f7f7fb;
+      --white:#fff;
+      --shadow:0 20px 55px rgba(23,23,43,.08);
+    }
+
+    * {
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body {
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.7;
+    }
+
+    a {
+      text-decoration:none;
+    }
+
+    header {
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.95);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:blur(14px);
+    }
+
+    .nav {
+      max-width:1200px;
+      min-height:76px;
+      margin:auto;
+      padding:0 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:25px;
+    }
+
+    .logo {
+      color:var(--dark);
+      font-size:29px;
+      font-weight:900;
+      letter-spacing:-1.5px;
+    }
+
+    .logo span {
+      color:var(--purple);
+    }
+
+    .nav-links {
+      display:flex;
+      align-items:center;
+      gap:27px;
+    }
+
+    .nav-links a {
+      color:#55556a;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .nav-links a:hover,
+    .nav-links .active {
+      color:var(--purple);
+    }
+
+    .cart-btn {
+      background:var(--dark);
+      color:white!important;
+      padding:11px 16px;
+      border-radius:11px;
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+    }
+
+    .cart-count {
+      min-width:21px;
+      height:21px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--purple);
+      border-radius:50%;
+      font-size:11px;
+      color:white;
+    }
+
+    .menu-btn {
+      display:none;
+      border:0;
+      background:var(--dark);
+      color:white;
+      width:43px;
+      height:43px;
+      border-radius:10px;
+      font-size:21px;
+      cursor:pointer;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 80% 20%,rgba(109,74,255,.3),transparent 30%),
+        linear-gradient(135deg,#11111f,#25223b);
+      color:white;
+      text-align:center;
+      padding:75px 24px;
+    }
+
+    .hero-label {
+      color:#cfc8ff;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:1.8px;
+      margin-bottom:12px;
+    }
+
+    .hero h1 {
+      font-size:clamp(40px,6vw,58px);
+      line-height:1;
+      letter-spacing:-3px;
+      margin-bottom:16px;
+    }
+
+    .hero p {
+      max-width:600px;
+      margin:auto;
+      color:#c7c7d6;
+      font-size:15px;
+    }
+
+    .main {
+      max-width:900px;
+      margin:auto;
+      padding:65px 24px 90px;
+    }
+
+    .notice {
+      background:#eeeaff;
+      border:1px solid #ddd6ff;
+      color:#4934a8;
+      border-radius:14px;
+      padding:17px;
+      font-size:12px;
+      margin-bottom:25px;
+    }
+
+    .policy {
+      background:white;
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      padding:35px;
+    }
+
+    .policy-section {
+      padding:0 0 27px;
+      margin-bottom:27px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .policy-section:last-child {
+      border-bottom:0;
+      margin-bottom:0;
+      padding-bottom:0;
+    }
+
+    .policy-section h2 {
+      font-size:18px;
+      margin-bottom:9px;
+      letter-spacing:-.4px;
+    }
+
+    .policy-section p {
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    footer {
+      background:#10101d;
+      color:#a7a7ba;
+      padding:50px 24px 25px;
+    }
+
+    .footer-inner {
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1.3fr 1fr 1fr;
+      gap:50px;
+      padding-bottom:40px;
+    }
+
+    .footer-logo {
+      color:white;
+      font-size:28px;
+      font-weight:900;
+      margin-bottom:12px;
+    }
+
+    .footer-logo span {
+      color:var(--purple);
+    }
+
+    .footer-about {
+      max-width:350px;
+      font-size:13px;
+    }
+
+    .footer-column h4 {
+      color:white;
+      font-size:13px;
+      margin-bottom:15px;
+    }
+
+    .footer-column a {
+      display:block;
+      color:#a7a7ba;
+      font-size:13px;
+      margin-bottom:9px;
+    }
+
+    .footer-column a:hover {
+      color:white;
+    }
+
+    .footer-bottom {
+      max-width:1200px;
+      margin:auto;
+      border-top:1px solid #29293a;
+      padding-top:22px;
+      display:flex;
+      justify-content:space-between;
+      font-size:12px;
+    }
+
+    .footer-bottom a {
+      color:#88889b;
+      margin-left:17px;
+    }
+
+    @media(max-width:800px) {
+
+      .menu-btn {
+        display:block;
+      }
+
+      .nav-links {
+        display:none;
+        position:absolute;
+        top:70px;
+        left:0;
+        right:0;
+        background:white;
+        padding:17px 22px 22px;
+        flex-direction:column;
+        align-items:stretch;
+        gap:5px;
+        border-bottom:1px solid var(--border);
+      }
+
+      .nav-links.active {
+        display:flex;
+      }
+
+      .nav-links a {
+        padding:11px 8px;
+      }
+
+      .cart-btn {
+        justify-content:center;
+      }
+
+      .hero {
+        padding:62px 20px;
+      }
+
+      .main {
+        padding:45px 18px 65px;
+      }
+
+      .policy {
+        padding:25px;
+      }
+
+      .footer-inner {
+        grid-template-columns:1fr;
+        gap:30px;
+      }
+
+      .footer-bottom {
+        flex-direction:column;
+        text-align:center;
+        gap:12px;
+      }
+
+      .footer-bottom a {
+        margin:0 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <div class="nav">
+
+      <a href="index.html" class="logo">
+        Vel<span>ora</span>
+      </a>
+
+      <button class="menu-btn" onclick="toggleMenu()">
+        ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="cart.html" class="cart-btn">
+          🛒 Cart
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+  <section class="hero">
+
+    <div class="hero-label">
+      VELORA INFORMATION
+    </div>
+
+    <h1>
+      Privacy Policy
+    </h1>
+
+    <p>
+      Information about how this website handles customer information.
+    </p>
+
+  </section>
+
+  <main class="main">
+
+    <div class="notice">
+      This page describes the current demonstration version of Velora.
+      Privacy practices should be reviewed and updated before a real public launch.
+    </div>
+
+    <div class="policy">
+
+      <section class="policy-section">
+
+        <h2>
+          1. Information We Collect
+        </h2>
+
+        <p>
+          When you place an order or send a message, the website may collect
+          information such as your name, phone number, email address, city,
+          delivery address and information you choose to provide.
+        </p>
+
+      </section>
+
+      <section class="policy-section">
+
+        <h2>
+          2. How Information Is Used
+        </h2>
+
+        <p>
+          Information may be used to process orders, respond to customer
+          questions and provide information related to store activity.
+        </p>
+
+      </section>
+
+      <section class="policy-section">
+
+        <h2>
+          3. Local Storage
+        </h2>
+
+        <p>
+          The current demonstration website uses browser local storage for
+          shopping cart information, orders and contact messages. This is
+          temporary front-end storage and should not be treated as secure
+          production data storage.
+        </p>
+
+      </section>
+
+      <section class="policy-section">
+
+        <h2>
+          4. Information Security
+        </h2>
+
+        <p>
+          A production version should use appropriate server-side security,
+          authentication, database protection and secure data handling.
+        </p>
+
+      </section>
+
+      <section class="policy-section">
+
+        <h2>
+          5. Third-Party Services
+        </h2>
+
+        <p>
+          The current demonstration version does not rely on a connected
+          payment processor or production customer database. Any future
+          third-party services should be reviewed before being added.
+        </p>
+
+      </section>
+
+      <section class="policy-section">
+
+        <h2>
+          6. Policy Updates
+        </h2>
+
+        <p>
+          This policy may be updated when the Velora website, services or
+          data practices change.
+        </p>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <div>
+
+        <div class="footer-logo">
+          Vel<span>ora</span>
+        </div>
+
+        <p class="footer-about">
+          A simple modern ecommerce experience built around useful products,
+          straightforward shopping and room to grow.
+        </p>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h4>Explore</h4>
+
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h4>Information</h4>
+
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="shipping.html">Shipping & Returns</a>
+        <a href="cart.html">Shopping Cart</a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <div>
+        © 2026 Velora. All rights reserved.
+      </div>
+
+      <div>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="shipping.html">Shipping</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script>
+
+    function toggleMenu() {
+      document
+        .getElementById("navLinks")
+        .classList.toggle("active");
+    }
+
+    function updateCartCount() {
+
+      try {
+
+        const cart =
+          JSON.parse(
+            localStorage.getItem("veloraCart")
+          ) || [];
+
+        const count =
+          cart.reduce(function(total,item) {
+            return total + Number(item.quantity || 0);
+          },0);
+
+        document.getElementById("cartCount").textContent = count;
+
+      } catch(error) {
+
+        document.getElementById("cartCount").textContent = "0";
+
+      }
+
+    }
+
+    updateCartCount();
+
+  </script>
+
+</body>
+</html>
+```

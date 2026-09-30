@@ -1,0 +1,1075 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Velora customer support.">
+  <title>Contact Velora</title>
+
+  <style>
+    :root {
+      --dark: #11111f;
+      --dark-2: #1b1b2d;
+      --purple: #6d4aff;
+      --purple-dark: #5636dc;
+      --purple-light: #eeeaff;
+      --text: #17172b;
+      --muted: #69697d;
+      --border: #e7e7ef;
+      --bg: #f7f7fb;
+      --white: #ffffff;
+      --shadow: 0 20px 55px rgba(23,23,43,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font-family: inherit;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      max-width: 1200px;
+      min-height: 76px;
+      margin: auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      color: var(--dark);
+      font-size: 29px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
+
+    .logo span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .nav-links a {
+      color: #55556a;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--purple);
+    }
+
+    .nav-links .active {
+      color: var(--purple);
+    }
+
+    .cart-btn {
+      background: var(--dark);
+      color: white !important;
+      padding: 11px 16px;
+      border-radius: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .cart-btn:hover {
+      background: var(--purple);
+    }
+
+    .cart-count {
+      min-width: 21px;
+      height: 21px;
+      padding: 0 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--purple);
+      color: white;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: var(--dark);
+      color: white;
+      width: 43px;
+      height: 43px;
+      border-radius: 10px;
+      font-size: 21px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(109,74,255,0.3), transparent 30%),
+        linear-gradient(135deg, #11111f, #25223b);
+      color: white;
+      padding: 78px 24px;
+      text-align: center;
+    }
+
+    .hero-label {
+      color: #cfc8ff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.8px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 62px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: auto;
+      color: #c7c7d6;
+      font-size: 16px;
+    }
+
+    /* MAIN */
+
+    .main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 24px 95px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    /* INFO */
+
+    .info-panel {
+      background: var(--dark);
+      color: white;
+      border-radius: 22px;
+      padding: 35px;
+      min-height: 100%;
+      box-shadow: var(--shadow);
+    }
+
+    .info-panel h2 {
+      font-size: 28px;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+
+    .info-panel > p {
+      color: #b9b9ca;
+      font-size: 13px;
+      margin-bottom: 32px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 15px;
+      padding: 18px 0;
+      border-top: 1px solid #2b2b3d;
+    }
+
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 11px;
+      background: #292540;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .info-item h3 {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .info-item p {
+      color: #aaaabd;
+      font-size: 11px;
+    }
+
+    .whatsapp-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      margin-top: 24px;
+      padding: 13px;
+      border-radius: 10px;
+      background: var(--purple);
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      transition: 0.25s ease;
+    }
+
+    .whatsapp-btn:hover {
+      background: var(--purple-dark);
+      transform: translateY(-2px);
+    }
+
+    /* FORM */
+
+    .form-panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-panel h2 {
+      font-size: 28px;
+      letter-spacing: -1px;
+      margin-bottom: 7px;
+    }
+
+    .form-intro {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 27px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 11px;
+      font-weight: 800;
+      color: #343447;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #fafafd;
+      border-radius: 10px;
+      padding: 13px 14px;
+      color: var(--text);
+      font-size: 12px;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--purple);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(109,74,255,0.08);
+    }
+
+    textarea {
+      min-height: 145px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      border: 0;
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 10px;
+      background: var(--purple);
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .submit-btn:hover {
+      background: var(--purple-dark);
+      transform: translateY(-2px);
+    }
+
+    .success {
+      display: none;
+      margin-top: 15px;
+      padding: 13px;
+      border-radius: 10px;
+      background: #edf9f0;
+      border: 1px solid #ccebd2;
+      color: #28733a;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* FAQ */
+
+    .faq-section {
+      margin-top: 90px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading span {
+      display: block;
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      font-size: 35px;
+      letter-spacing: -1.5px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .faq {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 23px;
+    }
+
+    .faq h3 {
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .faq p {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #10101d;
+      color: #a7a7ba;
+      padding: 55px 24px 25px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 45px;
+    }
+
+    .footer-logo {
+      color: white;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo span {
+      color: var(--purple);
+    }
+
+    .footer-about {
+      max-width: 350px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-column h4 {
+      color: white;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: #a7a7ba;
+      font-size: 13px;
+      margin-bottom: 9px;
+      transition: 0.2s;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: auto;
+      border-top: 1px solid #29293a;
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 12px;
+    }
+
+    .footer-bottom a {
+      color: #88889b;
+      margin-left: 17px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 950px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .nav {
+        min-height: 70px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        padding: 17px 22px 22px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 11px 8px;
+      }
+
+      .cart-btn {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 65px 20px;
+      }
+
+      .main {
+        padding: 50px 20px 70px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-bottom a {
+        margin: 0 8px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav {
+        padding: 0 18px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .info-panel,
+      .form-panel {
+        padding: 25px;
+      }
+
+      .cta {
+        padding: 35px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="nav">
+
+      <a href="index.html" class="logo">
+        Vel<span>ora</span>
+      </a>
+
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">
+        ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+
+        <a href="index.html" onclick="closeMenu()">Home</a>
+
+        <a href="products.html" onclick="closeMenu()">Products</a>
+
+        <a href="about.html" onclick="closeMenu()">About</a>
+
+        <a href="contact.html" class="active" onclick="closeMenu()">Contact</a>
+
+        <a href="cart.html" class="cart-btn" onclick="closeMenu()">
+          🛒 Cart
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-label">
+      CONTACT VELORA
+    </div>
+
+    <h1>
+      We're here to help.
+    </h1>
+
+    <p>
+      Have a question about an order, product or anything else?
+      Send us a message and we'll get back to you.
+    </p>
+
+  </section>
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <section class="contact-grid">
+
+      <!-- CONTACT INFORMATION -->
+
+      <div class="info-panel">
+
+        <h2>
+          Let's talk.
+        </h2>
+
+        <p>
+          Use the information below to reach Velora.
+          Real contact details can be added before launch.
+        </p>
+
+        <div class="info-item">
+
+          <div class="info-icon">
+            ☎
+          </div>
+
+          <div>
+            <h3>Phone</h3>
+            <p>Contact details coming soon</p>
+          </div>
+
+        </div>
+
+        <div class="info-item">
+
+          <div class="info-icon">
+            ✉
+          </div>
+
+          <div>
+            <h3>Email</h3>
+            <p>support@velora.example</p>
+          </div>
+
+        </div>
+
+        <div class="info-item">
+
+          <div class="info-icon">
+            ◉
+          </div>
+
+          <div>
+            <h3>Store</h3>
+            <p>Online Store</p>
+          </div>
+
+        </div>
+
+        <a href="https://wa.me/" class="whatsapp-btn" target="_blank">
+          💬 Contact on WhatsApp
+        </a>
+
+      </div>
+
+      <!-- FORM -->
+
+      <div class="form-panel">
+
+        <h2>
+          Send a message
+        </h2>
+
+        <p class="form-intro">
+          Fill in the form and your message will be saved for the store administrator.
+        </p>
+
+        <form id="contactForm">
+
+          <div class="form-grid">
+
+            <div class="field">
+
+              <label for="name">
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                id="name"
+                placeholder="Your name"
+                required
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label for="phone">
+                Phone Number
+              </label>
+
+              <input
+                type="tel"
+                id="phone"
+                placeholder="Your phone number"
+                required
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label for="email">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                placeholder="you@example.com"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label for="subject">
+                Subject
+              </label>
+
+              <select id="subject">
+
+                <option value="General Question">
+                  General Question
+                </option>
+
+                <option value="Order Question">
+                  Order Question
+                </option>
+
+                <option value="Product Question">
+                  Product Question
+                </option>
+
+                <option value="Delivery Question">
+                  Delivery Question
+                </option>
+
+                <option value="Other">
+                  Other
+                </option>
+
+              </select>
+
+            </div>
+
+            <div class="field full">
+
+              <label for="message">
+                Message
+              </label>
+
+              <textarea
+                id="message"
+                placeholder="Write your message here..."
+                required
+              ></textarea>
+
+            </div>
+
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Send Message →
+          </button>
+
+          <div class="success" id="successMessage">
+            ✓ Your message has been received successfully.
+          </div>
+
+        </form>
+
+      </div>
+
+    </section>
+
+    <!-- FAQ -->
+
+    <section class="faq-section">
+
+      <div class="section-heading">
+
+        <span>
+          QUICK ANSWERS
+        </span>
+
+        <h2>
+          Frequently Asked Questions
+        </h2>
+
+      </div>
+
+      <div class="faq-grid">
+
+        <article class="faq">
+
+          <h3>
+            How can I check my order?
+          </h3>
+
+          <p>
+            For the current store setup, contact Velora with your order information for assistance.
+          </p>
+
+        </article>
+
+        <article class="faq">
+
+          <h3>
+            What payment method is available?
+          </h3>
+
+          <p>
+            Cash on Delivery is currently available in this store setup.
+          </p>
+
+        </article>
+
+        <article class="faq">
+
+          <h3>
+            Can I ask about a product before ordering?
+          </h3>
+
+          <p>
+            Yes. Use the contact form and select Product Question.
+          </p>
+
+        </article>
+
+        <article class="faq">
+
+          <h3>
+            Is the store available 24/7?
+          </h3>
+
+          <p>
+            The website can be visited online at any time. Customer response times may vary.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <div>
+
+        <div class="footer-logo">
+          Vel<span>ora</span>
+        </div>
+
+        <p class="footer-about">
+          A simple modern ecommerce experience built around useful products,
+          straightforward shopping and room to grow.
+        </p>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h4>Explore</h4>
+
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h4>Information</h4>
+
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="shipping.html">Shipping & Returns</a>
+        <a href="cart.html">Shopping Cart</a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <div>
+        © 2026 Velora. All rights reserved.
+      </div>
+
+      <div>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="shipping.html">Shipping</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script>
+
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    function closeMenu() {
+      document.getElementById("navLinks").classList.remove("active");
+    }
+
+    function updateCartCount() {
+
+      const cartCount =
+        document.getElementById("cartCount");
+
+      try {
+
+        const cart =
+          JSON.parse(
+            localStorage.getItem("veloraCart")
+          ) || [];
+
+        const totalItems =
+          cart.reduce(function(total, item) {
+            return total + Number(item.quantity || 0);
+          }, 0);
+
+        cartCount.textContent =
+          totalItems;
+
+      } catch (error) {
+
+        cartCount.textContent =
+          "0";
+
+      }
+
+    }
+
+    document
+      .getElementById("contactForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const message = {
+
+          id: Date.now(),
+
+          name:
+            document.getElementById("name").value.trim(),
+
+          phone:
+            document.getElementById("phone").value.trim(),
+
+          email:
+            document.getElementById("email").value.trim(),
+
+          subject:
+            document.getElementById("subject").value,
+
+          message:
+            document.getElementById("message").value.trim(),
+
+          date:
+            new Date().toLocaleString()
+
+        };
+
+        let messages = [];
+
+        try {
+
+          messages =
+            JSON.parse(
+              localStorage.getItem("veloraMessages")
+            ) || [];
+
+        } catch (error) {
+
+          messages = [];
+
+        }
+
+        messages.push(message);
+
+        localStorage.setItem(
+          "veloraMessages",
+          JSON.stringify(messages)
+        );
+
+        document
+          .getElementById("successMessage")
+          .style.display = "block";
+
+        document
+          .getElementById("contactForm")
+          .reset();
+
+        setTimeout(function() {
+
+          document
+            .getElementById("successMessage")
+            .style.display = "none";
+
+        }, 5000);
+
+      });
+
+    updateCartCount();
+
+  </script>
+
+</body>
+</html>
+```

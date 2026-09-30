@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | Velora</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f7fb;
+    color:#17172a;
+}
+
+header{
+    height:82px;
+    background:#fff;
+    border-bottom:1px solid #e5e5ee;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:31px;
+    font-weight:900;
+    color:#151522;
+    text-decoration:none;
+}
+
+.logo span{
+    color:#6c45ff;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+nav a{
+    color:#44445a;
+    text-decoration:none;
+    font-weight:700;
+    font-size:15px;
+}
+
+.cart-link{
+    background:#17172a;
+    color:#fff!important;
+    padding:13px 20px;
+    border-radius:13px;
+}
+
+.cart-count{
+    display:inline-flex;
+    min-width:21px;
+    height:21px;
+    align-items:center;
+    justify-content:center;
+    background:#7047ff;
+    border-radius:50%;
+    font-size:12px;
+    margin-left:5px;
+}
+
+.menu-btn{
+    display:none;
+    border:0;
+    background:#17172a;
+    color:#fff;
+    font-size:22px;
+    width:43px;
+    height:43px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.hero{
+    background:linear-gradient(135deg,#151522,#6943ff);
+    color:#fff;
+    padding:65px 7%;
+}
+
+.hero h1{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#e8e4ff;
+    font-size:17px;
+}
+
+.container{
+    width:86%;
+    max-width:1180px;
+    margin:45px auto;
+}
+
+.checkout-grid{
+    display:grid;
+    grid-template-columns:1.45fr .75fr;
+    gap:28px;
+    align-items:start;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #e7e7ef;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 12px 35px rgba(30,25,70,.06);
+}
+
+.card h2{
+    font-size:23px;
+    margin-bottom:25px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+label{
+    font-size:14px;
+    font-weight:800;
+}
+
+.required{
+    color:#7047ff;
+}
+
+input,
+textarea{
+    width:100%;
+    border:1px solid #dcdce7;
+    border-radius:11px;
+    padding:14px;
+    font-size:15px;
+    outline:none;
+    font-family:inherit;
+    background:#fff;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#7047ff;
+    box-shadow:0 0 0 3px rgba(112,71,255,.1);
+}
+
+textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.payment{
+    margin-top:25px;
+    padding-top:25px;
+    border-top:1px solid #e5e5ee;
+}
+
+.payment-option{
+    border:1.5px solid #7047ff;
+    background:#f0ecff;
+    padding:18px;
+    border-radius:13px;
+}
+
+.payment-option label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+}
+
+.payment-option input{
+    width:auto;
+}
+
+.payment-option p{
+    margin:9px 0 0 28px;
+    color:#66667a;
+    font-size:13px;
+}
+
+.place-btn{
+    width:100%;
+    border:0;
+    background:#6c45ff;
+    color:#fff;
+    padding:17px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:900;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+.place-btn:hover{
+    background:#5734df;
+}
+
+.place-btn:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+}
+
+.order-card{
+    position:sticky;
+    top:105px;
+}
+
+.order-items{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-bottom:20px;
+}
+
+.order-item{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    padding-bottom:14px;
+    border-bottom:1px solid #eeeeF4;
+}
+
+.order-item img{
+    width:62px;
+    height:62px;
+    object-fit:cover;
+    border-radius:11px;
+    background:#f0f0f5;
+}
+
+.order-item-info{
+    flex:1;
+}
+
+.order-item-name{
+    font-weight:800;
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.order-item-meta{
+    color:#77778a;
+    font-size:13px;
+}
+
+.order-item-price{
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    padding:11px 0;
+    color:#66667a;
+}
+
+.summary-total{
+    display:flex;
+    justify-content:space-between;
+    border-top:1px solid #e2e2ea;
+    margin-top:8px;
+    padding-top:20px;
+    font-size:21px;
+    font-weight:900;
+}
+
+.notice{
+    background:#eee9ff;
+    color:#5030c7;
+    border-radius:12px;
+    padding:15px;
+    margin-top:20px;
+    font-size:13px;
+    font-weight:700;
+    line-height:1.5;
+}
+
+.back-cart{
+    display:block;
+    text-align:center;
+    margin-top:18px;
+    color:#55556a;
+    font-weight:700;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.error-box{
+    display:none;
+    background:#fff0f0;
+    color:#b42318;
+    border:1px solid #ffcaca;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+    font-weight:700;
+    line-height:1.5;
+}
+
+.empty{
+    display:none;
+    text-align:center;
+    padding:55px 20px;
+}
+
+.empty h2{
+    margin-bottom:10px;
+}
+
+.empty p{
+    color:#77778a;
+    margin-bottom:22px;
+}
+
+.shop-btn{
+    display:inline-block;
+    background:#6c45ff;
+    color:white;
+    text-decoration:none;
+    padding:14px 22px;
+    border-radius:11px;
+    font-weight:800;
+}
+
+.success{
+    display:none;
+    text-align:center;
+    padding:60px 25px;
+}
+
+.success-icon{
+    width:75px;
+    height:75px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:#e6f8ed;
+    color:#159447;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:38px;
+    font-weight:900;
+}
+
+.success h2{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.success p{
+    color:#66667a;
+    line-height:1.6;
+}
+
+.order-number{
+    display:inline-block;
+    background:#eee9ff;
+    color:#5734df;
+    padding:11px 16px;
+    border-radius:10px;
+    font-weight:900;
+    margin:18px 0;
+}
+
+footer{
+    margin-top:70px;
+    background:#151522;
+    color:#aaaabb;
+    padding:35px 7%;
+    text-align:center;
+}
+
+footer a{
+    color:#c8c0ff;
+    text-decoration:none;
+    margin:0 8px;
+}
+
+footer p{
+    margin-top:12px;
+    font-size:13px;
+}
+
+@media(max-width:850px){
+
+    header{
+        padding:0 5%;
+    }
+
+    nav{
+        display:none;
+        position:absolute;
+        top:82px;
+        left:0;
+        right:0;
+        background:#fff;
+        padding:20px 5%;
+        flex-direction:column;
+        align-items:stretch;
+        gap:12px;
+        border-bottom:1px solid #ddd;
+    }
+
+    nav.open{
+        display:flex;
+    }
+
+    nav a{
+        padding:12px;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        padding:50px 5%;
+    }
+
+    .hero h1{
+        font-size:35px;
+    }
+
+    .container{
+        width:90%;
+    }
+
+    .checkout-grid{
+        grid-template-columns:1fr;
+    }
+
+    .order-card{
+        position:static;
+    }
+}
+
+@media(max-width:600px){
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .logo{
+        font-size:27px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+```
+<a href="index.html" class="logo">
+    Vel<span>ora</span>
+</a>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+<nav id="nav">
+
+    <a href="index.html">Home</a>
+
+    <a href="products.html">Products</a>
+
+    <a href="about.html">About</a>
+
+    <a href="contact.html">Contact</a>
+
+    <a href="cart.html" class="cart-link">
+        🛒 Cart
+        <span class="cart-count" id="cartCount">0</span>
+    </a>
+
+</nav>
+```
+
+</header>
+
+<section class="hero">
+
+```
+<h1>Complete Your Order</h1>
+
+<p>
+    Enter your delivery information and place your order.
+</p>
+```
+
+</section>
+
+<main class="container">
+
+```
+<div id="checkoutArea">
+
+    <div class="checkout-grid">
+
+        <section class="card">
+
+            <h2>Delivery Information</h2>
+
+            <div id="errorBox" class="error-box"></div>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+                        Full Name
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Phone Number
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="03XXXXXXXXX"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Optional"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        City
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="city"
+                        placeholder="Enter your city"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Area / Town</label>
+
+                    <input
+                        type="text"
+                        id="area"
+                        placeholder="Optional"
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Complete Delivery Address
+                        <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        id="address"
+                        placeholder="Enter complete delivery address"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>Order Notes</label>
+
+                    <textarea
+                        id="notes"
+                        placeholder="Optional"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="payment">
+
+                <h2>Payment Method</h2>
+
+                <div class="payment-option">
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Cash on Delivery"
+                            checked
+                        >
+
+                        Cash on Delivery
+
+                    </label>
+
+                    <p>
+                        Pay when your order is delivered.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="placeOrderButton"
+                class="place-btn"
+                onclick="placeOrder()"
+            >
+                Place Order →
+            </button>
+
+        </section>
+
+
+        <aside class="card order-card">
+
+            <h2>Your Order</h2>
+
+            <div
+                id="orderItems"
+                class="order-items"
+            ></div>
+
+            <div class="summary-row">
+
+                <span>Subtotal</span>
+
+                <strong id="subtotal">$0.00</strong>
+
+            </div>
+
+            <div class="summary-row">
+
+                <span>Shipping</span>
+
+                <span>Calculated later</span>
+
+            </div>
+
+            <div class="summary-total">
+
+                <span>Total</span>
+
+                <span id="total">$0.00</span>
+
+            </div>
+
+            <div class="notice">
+
+                💳 Cash on Delivery is currently available.
+
+            </div>
+
+            <a
+                href="cart.html"
+                class="back-cart"
+            >
+                ← Back to Shopping Cart
+            </a>
+
+        </aside>
+
+    </div>
+
+</div>
+
+
+<div
+    id="emptyArea"
+    class="card empty"
+>
+
+    <h2>Your cart is empty</h2>
+
+    <p>
+        Add some products before going to checkout.
+    </p>
+
+    <a
+        href="products.html"
+        class="shop-btn"
+    >
+        Browse Products
+    </a>
+
+</div>
+
+
+<div
+    id="successArea"
+    class="card success"
+>
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+    <h2>Order Confirmed!</h2>
+
+    <p>
+        Thank you for shopping with Velora.
+    </p>
+
+    <div
+        class="order-number"
+        id="orderNumber"
+    ></div>
+
+    <p>
+        Your order has been saved successfully.
+    </p>
+
+    <br>
+
+    <a
+        href="products.html"
+        class="shop-btn"
+    >
+        Continue Shopping
+    </a>
+
+</div>
+```
+
+</main>
+
+<footer>
+
+```
+<div>
+
+    <a href="privacy.html">
+        Privacy Policy
+    </a>
+
+    <a href="terms.html">
+        Terms & Conditions
+    </a>
+
+    <a href="shipping.html">
+        Shipping & Returns
+    </a>
+
+</div>
+
+<p>
+    © 2026 Velora. All rights reserved.
+</p>
+```
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+
+    document
+        .getElementById("nav")
+        .classList
+        .toggle("open");
+
+}
+
+
+/* ---------------------------------------
+   GET PRODUCTS
+--------------------------------------- */
+
+function getProducts(){
+
+    try{
+
+        const saved =
+            localStorage.getItem("veloraProducts");
+
+        if(saved){
+
+            const products =
+                JSON.parse(saved);
+
+            if(
+                Array.isArray(products) &&
+                products.length > 0
+            ){
+
+                return products;
+
+            }
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+    return [];
+
+}
+
+
+/* ---------------------------------------
+   GET CART
+--------------------------------------- */
+
+function getCart(){
+
+    try{
+
+        const saved =
+            localStorage.getItem("veloraCart");
+
+        if(saved){
+
+            const cart =
+                JSON.parse(saved);
+
+            if(Array.isArray(cart)){
+
+                return cart;
+
+            }
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+    return [];
+
+}
+
+
+/* ---------------------------------------
+   FIND PRODUCT
+--------------------------------------- */
+
+function findProduct(id){
+
+    const products =
+        getProducts();
+
+    return products.find(
+        product =>
+        String(product.id) === String(id)
+    );
+
+}
+
+
+/* ---------------------------------------
+   GET PRICE
+--------------------------------------- */
+
+function getPrice(value){
+
+    if(typeof value === "number"){
+
+        return value;
+
+    }
+
+    const number =
+        parseFloat(
+            String(value || "")
+            .replace(/[^0-9.]/g,"")
+        );
+
+    return Number.isFinite(number)
+        ? number
+        : 0;
+
+}
+
+
+/* ---------------------------------------
+   CART COUNT
+--------------------------------------- */
+
+function updateCartCount(){
+
+    const cart =
+        getCart();
+
+    let count = 0;
+
+    cart.forEach(item => {
+
+        count +=
+            Number(item.quantity) || 0;
+
+    });
+
+    document
+        .getElementById("cartCount")
+        .textContent = count;
+
+}
+
+
+/* ---------------------------------------
+   SHOW ERROR
+--------------------------------------- */
+
+function showError(message){
+
+    const box =
+        document.getElementById("errorBox");
+
+    box.textContent =
+        message;
+
+    box.style.display =
+        "block";
+
+}
+
+
+/* ---------------------------------------
+   CLEAN OLD ORDERS
+--------------------------------------- */
+
+function cleanOldOrders(){
+
+    let orders = [];
+
+    try{
+
+        const saved =
+            localStorage.getItem("veloraOrders");
+
+        if(saved){
+
+            const parsed =
+                JSON.parse(saved);
+
+            if(Array.isArray(parsed)){
+
+                orders = parsed;
+
+            }
+
+        }
+
+    }catch(error){
+
+        orders = [];
+
+    }
+
+
+    /*
+       Remove image data from old orders.
+       This prevents huge base64 images from
+       filling browser storage.
+    */
+
+    orders =
+        orders.map(order => {
+
+            if(!order || typeof order !== "object"){
+                return null;
+            }
+
+            const cleanOrder = {
+                id:order.id,
+                date:order.date,
+                name:order.name,
+                phone:order.phone,
+                email:order.email,
+                city:order.city,
+                area:order.area,
+                address:order.address,
+                notes:order.notes,
+                payment:order.payment,
+                subtotal:Number(order.subtotal) || 0,
+                total:Number(order.total) || 0,
+                status:order.status || "New",
+                items:Array.isArray(order.items)
+                    ? order.items.map(item => ({
+                        id:item.id,
+                        name:item.name,
+                        category:item.category,
+                        price:Number(item.price) || 0,
+                        quantity:Number(item.quantity) || 1
+                    }))
+                    : []
+            };
+
+            return cleanOrder;
+
+        })
+        .filter(Boolean);
+
+
+    /*
+       Keep the latest 30 orders.
+    */
+
+    if(orders.length > 30){
+
+        orders =
+            orders.slice(-30);
+
+    }
+
+
+    try{
+
+        localStorage.setItem(
+            "veloraOrders",
+            JSON.stringify(orders)
+        );
+
+    }catch(error){
+
+        /*
+           If storage is still full,
+           remove orders completely.
+        */
+
+        localStorage.removeItem(
+            "veloraOrders"
+        );
+
+        orders = [];
+
+    }
+
+
+    return orders;
+
+}
+
+
+/* ---------------------------------------
+   RENDER CHECKOUT
+--------------------------------------- */
+
+function renderCheckout(){
+
+    const cart =
+        getCart();
+
+    const orderItems =
+        document.getElementById("orderItems");
+
+    const checkoutArea =
+        document.getElementById("checkoutArea");
+
+    const emptyArea =
+        document.getElementById("emptyArea");
+
+    const subtotalElement =
+        document.getElementById("subtotal");
+
+    const totalElement =
+        document.getElementById("total");
+
+
+    orderItems.innerHTML = "";
+
+
+    if(cart.length === 0){
+
+        checkoutArea.style.display =
+            "none";
+
+        emptyArea.style.display =
+            "block";
+
+        updateCartCount();
+
+        return;
+
+    }
+
+
+    checkoutArea.style.display =
+        "block";
+
+    emptyArea.style.display =
+        "none";
+
+
+    let subtotal = 0;
+
+
+    cart.forEach(item => {
+
+        const product =
+            findProduct(item.id);
+
+        if(!product){
+
+            return;
+
+        }
+
+
+        const quantity =
+            Math.max(
+                1,
+                Number(item.quantity) || 1
+            );
+
+
+        const price =
+            getPrice(product.price);
+
+
+        const itemTotal =
+            price * quantity;
+
+
+        subtotal += itemTotal;
+
+
+        const row =
+            document.createElement("div");
+
+        row.className =
+            "order-item";
+
+
+        row.innerHTML = `
+
+            <img
+                src="${product.image || ""}"
+                alt="${product.name || "Product"}"
+                onerror="this.style.display='none'"
+            >
+
+            <div class="order-item-info">
+
+                <div class="order-item-name">
+                    ${product.name || "Product"}
+                </div>
+
+                <div class="order-item-meta">
+                    ${quantity} × $${price.toFixed(2)}
+                </div>
+
+            </div>
+
+            <div class="order-item-price">
+                $${itemTotal.toFixed(2)}
+            </div>
+
+        `;
+
+
+        orderItems.appendChild(row);
+
+    });
+
+
+    subtotalElement.textContent =
+        "$" + subtotal.toFixed(2);
+
+    totalElement.textContent =
+        "$" + subtotal.toFixed(2);
+
+
+    updateCartCount();
+
+}
+
+
+/* ---------------------------------------
+   PLACE ORDER
+--------------------------------------- */
+
+function placeOrder(){
+
+    const button =
+        document.getElementById(
+            "placeOrderButton"
+        );
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "Processing Order...";
+
+
+    try{
+
+        const cart =
+            getCart();
+
+
+        if(!cart.length){
+
+            showError(
+                "Your cart is empty."
+            );
+
+            button.disabled = false;
+
+            button.textContent =
+                "Place Order →";
+
+            return;
+
+        }
+
+
+        const name =
+            document
+            .getElementById("name")
+            .value
+            .trim();
+
+
+        const phone =
+            document
+            .getElementById("phone")
+            .value
+            .trim();
+
+
+        const email =
+            document
+            .getElementById("email")
+            .value
+            .trim();
+
+
+        const city =
+            document
+            .getElementById("city")
+            .value
+            .trim();
+
+
+        const area =
+            document
+            .getElementById("area")
+            .value
+            .trim();
+
+
+        const address =
+            document
+            .getElementById("address")
+            .value
+            .trim();
+
+
+        const notes =
+            document
+            .getElementById("notes")
+            .value
+            .trim();
+
+
+        if(!name){
+
+            showError(
+                "Please enter your full name."
+            );
+
+            throw new Error("Missing name");
+
+        }
+
+
+        if(!phone){
+
+            showError(
+                "Please enter your phone number."
+            );
+
+            throw new Error("Missing phone");
+
+        }
+
+
+        if(!city){
+
+            showError(
+                "Please enter your city."
+            );
+
+            throw new Error("Missing city");
+
+        }
+
+
+        if(!address){
+
+            showError(
+                "Please enter your complete delivery address."
+            );
+
+            throw new Error("Missing address");
+
+        }
+
+
+        const items = [];
+
+        let subtotal = 0;
+
+
+        cart.forEach(item => {
+
+            const product =
+                findProduct(item.id);
+
+
+            if(!product){
+
+                return;
+
+            }
+
+
+            const quantity =
+                Math.max(
+                    1,
+                    Number(item.quantity) || 1
+                );
+
+
+            const price =
+                getPrice(product.price);
+
+
+            subtotal +=
+                price * quantity;
+
+
+            /*
+               IMPORTANT:
+               We deliberately DO NOT save
+               product.image in the order.
+               Admin images can be very large.
+            */
+
+            items.push({
+
+                id:String(product.id),
+
+                name:product.name || "Product",
+
+                category:product.category || "",
+
+                price:price,
+
+                quantity:quantity
+
+            });
+
+        });
+
+
+        if(items.length === 0){
+
+            showError(
+                "The product in your cart could not be found. Please return to Products and add it again."
+            );
+
+            throw new Error(
+                "No valid products"
+            );
+
+        }
+
+
+        if(subtotal <= 0){
+
+            showError(
+                "The order total is $0. Please remove the product and add it again."
+            );
+
+            throw new Error(
+                "Zero total"
+            );
+
+        }
+
+
+        /*
+           Clean old oversized orders first.
+        */
+
+        let orders =
+            cleanOldOrders();
+
+
+        const orderNumber =
+            "VEL-" +
+            Math.floor(
+                100000 +
+                Math.random() * 900000
+            );
+
+
+        const order = {
+
+            id:orderNumber,
+
+            date:new Date().toISOString(),
+
+            name:name,
+
+            phone:phone,
+
+            email:email,
+
+            city:city,
+
+            area:area,
+
+            address:address,
+
+            notes:notes,
+
+            payment:"Cash on Delivery",
+
+            items:items,
+
+            subtotal:subtotal,
+
+            total:subtotal,
+
+            status:"New"
+
+        };
+
+
+        orders.push(order);
+
+
+        /*
+           Save the order.
+        */
+
+        try{
+
+            localStorage.setItem(
+                "veloraOrders",
+                JSON.stringify(orders)
+            );
+
+        }catch(storageError){
+
+            /*
+               If browser storage is full,
+               remove old orders and save only
+               the new order.
+            */
+
+            console.warn(
+                "Storage full. Cleaning old orders."
+            );
+
+
+            localStorage.removeItem(
+                "veloraOrders"
+            );
+
+
+            localStorage.setItem(
+                "veloraOrders",
+                JSON.stringify([order])
+            );
+
+        }
+
+
+        /*
+           Save latest order separately.
+        */
+
+        try{
+
+            localStorage.setItem(
+                "veloraLastOrder",
+                JSON.stringify(order)
+            );
+
+        }catch(lastOrderError){
+
+            console.warn(
+                "Could not save latest order."
+            );
+
+        }
+
+
+        /*
+           Clear cart.
+        */
+
+        localStorage.removeItem(
+            "veloraCart"
+        );
+
+        localStorage.removeItem(
+            "veloraCartCount"
+        );
+
+
+        /*
+           Show confirmation.
+        */
+
+        document
+            .getElementById("checkoutArea")
+            .style.display = "none";
+
+
+        document
+            .getElementById("emptyArea")
+            .style.display = "none";
+
+
+        document
+            .getElementById("successArea")
+            .style.display = "block";
+
+
+        document
+            .getElementById("orderNumber")
+            .textContent =
+            "Order Number: " +
+            orderNumber;
+
+
+        updateCartCount();
+
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+
+    }catch(error){
+
+        console.error(
+            "Order error:",
+            error
+        );
+
+
+        /*
+           Do not show the generic error for
+           our own validation errors because
+           we already showed the useful message.
+        */
+
+        if(
+            error.message !== "Missing name" &&
+            error.message !== "Missing phone" &&
+            error.message !== "Missing city" &&
+            error.message !== "Missing address" &&
+            error.message !== "No valid products" &&
+            error.message !== "Zero total"
+        ){
+
+            showError(
+                "The order could not be saved. The old order data has been cleaned. Please click Place Order again."
+            );
+
+        }
+
+
+        button.disabled = false;
+
+        button.textContent =
+            "Place Order →";
+
+    }
+
+}
+
+
+/* ---------------------------------------
+   START
+--------------------------------------- */
+
+renderCheckout();
+
+</script>
+
+</body>
+</html>
